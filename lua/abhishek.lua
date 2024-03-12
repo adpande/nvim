@@ -53,6 +53,20 @@ vim.keymap.set('n', '<leader>lw', builtin.lsp_dynamic_workspace_symbols, { desc 
 vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, { desc = '[l]sp fint [i]mplimentations' })
 vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, { desc = '[l]sp [D]efinitions' })
 
+-- Nvim Spectre mappings (search and replace)
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = 'Toggle Spectre',
+})
+-- vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+--     desc = "Search current word"
+-- })
+-- vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+--     desc = "Search current word"
+-- })
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = 'Search on current file',
+})
+
 -- Telescope file browser
 vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = '[F]ile [B]rowser', noremap = true })
 
