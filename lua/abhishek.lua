@@ -53,6 +53,12 @@ vim.keymap.set('n', '<leader>lw', builtin.lsp_dynamic_workspace_symbols, { desc 
 vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, { desc = '[l]sp fint [i]mplimentations' })
 vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, { desc = '[l]sp [D]efinitions' })
 
+-- Oil plugin keymaps
+vim.keymap.set('n', '<leader>O', function()
+  local cwd = vim.fn.getcwd()
+  require('oil').toggle_float(cwd)
+end, { desc = 'Open [O]il' })
+
 -- Nvim Spectre mappings (search and replace)
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
   desc = 'Toggle Spectre',
