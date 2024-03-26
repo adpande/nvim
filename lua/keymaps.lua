@@ -1,3 +1,7 @@
+local opts = { noremap = true, silent = true }
+
+local term_opts = { silent = true }
+
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -115,3 +119,22 @@ end)
 vim.keymap.set('n', '<C-S-N>', function()
   harpoon:list():next()
 end)
+
+vim.keymap.set({ 'i' }, '<C-s>', '<C-o>:w<ENTER>')
+vim.keymap.set({ 'n' }, '<C-s>', ':w<ENTER>')
+-- Move text up and down
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', opts)
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', opts)
+
+-- Press jk fast to exit insert mode
+vim.keymap.set('i', 'jk', '<ESC>', opts)
+vim.keymap.set('i', 'kj', '<ESC>', opts)
+
+-- Move text up and down
+vim.keymap.set('x', 'J', ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set('x', 'K', ":m '<-2<CR>gv=gv", opts)
+vim.keymap.set('x', '<A-j>', ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set('x', '<A-k>', ":m '<-2<CR>gv=gv", opts)
+
+vim.keymap.set('n', '<Backspace>', '<C-w>h', opts)
+vim.keymap.set('n', '<TAB>', '<C-w>l', opts)
